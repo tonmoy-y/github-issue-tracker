@@ -185,16 +185,17 @@ manageSpinner(true);
 document.getElementById('search-btn').addEventListener('click', async () => {
 
     manageSpinner(true);
-    if(search === '') {
+  
+     removeActiveBtn();
+    const searchString = document.getElementById('search');
+    const search = searchString.value.toLowerCase().trim();
+    searchString.value = '';
+      if(search === '') {
         alert('Please enter a search term');
         manageSpinner(false);
         LoadData();
         return;
     }
-     removeActiveBtn();
-    const searchString = document.getElementById('search');
-    const search = searchString.value.toLowerCase().trim();
-    searchString.value = '';
     console.log(search);
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${search}`;
     const res = await fetch(url);

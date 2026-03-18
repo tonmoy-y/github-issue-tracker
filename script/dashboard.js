@@ -38,6 +38,7 @@ const manageSpinner = (status) => {
 const renderIssue = (data) => {
     const issueContainer = document.getElementById('issue-container');
     issueContainer.innerHTML = '';
+    issueContainer.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4', 'gap-3');
     let issueCard = ``;
     data.forEach(issue => {
         // console.log( typeof issue.status);
@@ -192,8 +193,18 @@ document.getElementById('search-btn').addEventListener('click', async () => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${search}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.data);
+    // console.log(data.data.length);
         renderTotalIssueNumber(data.data.length);
+        if(data.data.length === 0) {
+            const issueContainer = document.getElementById('issue-container');
+            issueContainer.innerHTML = '';
+            manageSpinner(false);
+            issueContainer.classList.remove('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4', 'gap-3');
+            
+            issueContainer.innerHTML = '<p class=" text-2xl text-center text-gray-500">No issues found</p>';
+            
+            return;
+        }
         renderIssue(data.data);
        
 });
@@ -203,7 +214,7 @@ const infoLoad = async (id) => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.data);
+    // console.log(data.data);
     const issueDetails = data.data;
     const issueDetailsContainer = document.getElementById('issue-details');
     let html = ``;
@@ -229,7 +240,7 @@ const infoLoad = async (id) => {
         year: 'numeric'
             });
 
-            console.log(formatted);
+            // console.log(formatted);
     html +=`
     <div class="w-1 h-1 bg-gray-600 rounded-full"></div>
     <p>Opened by ${issueDetails.author}</p>

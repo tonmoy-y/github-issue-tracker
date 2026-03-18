@@ -44,7 +44,7 @@ const renderIssue = (data) => {
         // console.log( typeof issue.status);
         if(issue.status.toLowerCase() === 'open') {
             issueCard += `
-             <div onclick="infoLoad(${issue.id})" class="py-4 rounded-sm border-t-4 border-t-green-600 space-y-3 shadow-xl">
+             <div onclick="infoLoad(${issue.id})" class="py-4 rounded-lg border-t-4 border-t-green-600 space-y-3 shadow-xl">
             
             <div class="flex justify-between px-4">
                 <div class="h-6 w-6 rounded-full">
@@ -53,7 +53,7 @@ const renderIssue = (data) => {
         }
         else {
             issueCard += `
-         <div onclick="infoLoad(${issue.id})" class="py-4 rounded-sm border-t-4 border-t-purple-500 space-y-3 shadow-xl">
+         <div onclick="infoLoad(${issue.id})" class="py-4 rounded-lg border-t-4 border-t-purple-500 space-y-3 shadow-xl">
             
             <div class="flex justify-between px-4">
                 <div class="h-6 w-6 rounded-full">
@@ -218,7 +218,8 @@ document.getElementById('search-btn').addEventListener('click', async () => {
 });
 
 const infoLoad = async (id) => {
-    
+    my_modal_1.showModal();
+    manageSpinner(true);
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -326,8 +327,9 @@ if(issueDetails.priority.toLowerCase() === 'high') {
                 </div>
             </div>
             `;
+            manageSpinner(false);
     issueDetailsContainer.innerHTML = html;
-    my_modal_1.showModal();
+    
 }
 
 LoadData();

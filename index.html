@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title and logo  -->
+    <title>Github Issue Tracker</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- tailwindcss and daisy ui  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- google fonts  -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+
+        .geist-font {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
+</head>
+
+<body class="geist-font bg-base-300 ">
+
+    <main class="min-h-screen max-w-2xl mx-auto flex items-center justify-center">
+        <div class="space-y-4 p-8 flex flex-col items-center justify-center bg-white rounded-lg shadow-2xl sm:w-11/12 md:w-8/12">
+            <div class="flex flex-col items-center justify-center space-y-2">
+                <img src="./assets/github-logo.png" alt="Github logo">
+                <h1 class="text-2xl font-semibold text-center">GitHub Issues Tracker</h1>
+                <p class="text-accent-content">Sign in to manage your issues</p>
+            </div>
+            <div class="flex flex-col w-full">
+                <!-- <form action=""> -->
+                    <label class="label text-black mb-2"> Username</label>
+                    <input id="username" type="text" class="input mb-4 w-full" placeholder="Enter Username" required />
+
+                    <label class="label text-black mb-2">Password</label>
+                    <input id="password" type="password" class="input mb-4 w-full" placeholder="Enter Password"
+                        required />
+
+                    <button id="login-button" type="submit" class="btn btn-primary mt-4 w-full">Login</button>
+                <!-- </form> -->
+            </div>
+            <div id="wrong-password"></div>
+            <div class="flex items-center gap-3 w-full">
+                <div class="flex-1 border-t border-gray-300"></div>
+                <span class="text-gray-600 text-sm">OR</span>
+                <div class="flex-1 border-t border-gray-300"></div>
+            </div>
+            <div class="w-full text-center">
+                <p>Demo Credentials</p>
+                <div class=" py-6 bg-base-200 ">
+
+                    <p><span class="font-bold">Username:</span> admin</p>
+                    <p><span class="font-bold">Password:</span> admin123</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <script src="./script/index.js"></script>
+</body>
+
+</html>

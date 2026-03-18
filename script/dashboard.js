@@ -185,6 +185,12 @@ manageSpinner(true);
 document.getElementById('search-btn').addEventListener('click', async () => {
 
     manageSpinner(true);
+    if(search === '') {
+        alert('Please enter a search term');
+        manageSpinner(false);
+        LoadData();
+        return;
+    }
      removeActiveBtn();
     const searchString = document.getElementById('search');
     const search = searchString.value.toLowerCase().trim();
@@ -194,12 +200,7 @@ document.getElementById('search-btn').addEventListener('click', async () => {
     const res = await fetch(url);
     const data = await res.json();
     // console.log(data.data.length);
-    if(search === '') {
-        alert('Please enter a search term');
-        manageSpinner(false);
-        LoadData();
-        return;
-    }
+    
         renderTotalIssueNumber(data.data.length);
         if(data.data.length === 0) {
             const issueContainer = document.getElementById('issue-container');

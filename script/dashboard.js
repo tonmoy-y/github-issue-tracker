@@ -243,9 +243,9 @@ const infoLoad = async (id) => {
             // console.log(formatted);
     html +=`
     <div class="w-1 h-1 bg-gray-600 rounded-full"></div>
-    <p>Opened by ${issueDetails.author}</p>
+    <p class="text-gray-500">Opened by ${issueDetails.author}</p>
     <div class="w-1 h-1 bg-gray-600 rounded-full"></div>
-    <p>${formatted}</p>
+    <p class="text-gray-500">${formatted}</p>
     </div>
      <div class="flex gap-2 my-6">
 
